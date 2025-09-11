@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Git & GitHub Cheat Sheet</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+        
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .difficulty-easy { border-left: 5px solid #28a745; }
+        .difficulty-medium { border-left: 5px solid #ffc107; }
+        .difficulty-hard { border-left: 5px solid #dc3545; }
+        .difficulty-github { border-left: 5px solid #6f42c1; }
+        .difficulty-emergency { border-left: 5px solid #fd7e14; }
+        
+        h1 { margin: 0; font-size: 2.5em; }
+        h2 { color: #333; margin-top: 0; }
+        h3 { color: #555; margin-top: 25px; margin-bottom: 15px; }
+        
+        .command-item {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .command-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 14px;
+            min-width: 200px;
+            margin-right: 15px;
+        }
+        
+        .command-desc {
+            flex: 1;
+            color: #666;
+        }
+        
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .workflow {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .workflow pre {
+            background: #263238;
+            color: #eee;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .copy-workflow-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        
+        .tip {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+        }
+        
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadMarkdown()">📥 Download .md</button>
+    
+    <div class="header">
+        <h1>🚀 Complete Git & GitHub Cheat Sheet</h1>
+        <p>From beginner to advanced - with copy buttons for every command!</p>
+    </div>
+
+    <div class="section difficulty-easy">
+        <h2>🟢 Easy Commands (Everyday Basics)</h2>
+        
+        <h3>Repository Setup</h3>
+        <div class="command-item">
+            <code class="command-code">git init</code>
+            <span class="command-desc">Create a new Git repository in current folder</span>
+            <button class="copy-btn" onclick="copyCommand('git init', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git clone &lt;url&gt;</code>
+            <span class="command-desc">Download a repository from GitHub to your computer</span>
+            <button class="copy-btn" onclick="copyCommand('git clone <url>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git status</code>
+            <span class="command-desc">Show what files have changed (your best friend!)</span>
+            <button class="copy-btn" onclick="copyCommand('git status', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git add &lt;file&gt;</code>
+            <span class="command-desc">Stage a file for commit (prepare it)</span>
+            <button class="copy-btn" onclick="copyCommand('git add <file>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git add .</code>
+            <span class="command-desc">Stage all changed files</span>
+            <button class="copy-btn" onclick="copyCommand('git add .', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git commit -m "message"</code>
+            <span class="command-desc">Save changes with a description</span>
+            <button class="copy-btn" onclick="copyCommand('git commit -m \"message\"', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git push</code>
+            <span class="command-desc">Upload your commits to GitHub</span>
+            <button class="copy-btn" onclick="copyCommand('git push', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git pull</code>
+            <span class="command-desc">Download latest changes from GitHub</span>
+            <button class="copy-btn" onclick="copyCommand('git pull', this)">Copy</button>
+        </div>
+
+        <h3>Basic Information</h3>
+        <div class="command-item">
+            <code class="command-code">git log</code>
+            <span class="command-desc">See history of commits</span>
+            <button class="copy-btn" onclick="copyCommand('git log', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git log --oneline</code>
+            <span class="command-desc">See commit history in compact format</span>
+            <button class="copy-btn" onclick="copyCommand('git log --oneline', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git diff</code>
+            <span class="command-desc">Show what changes you made</span>
+            <button class="copy-btn" onclick="copyCommand('git diff', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git branch</code>
+            <span class="command-desc">List all branches</span>
+            <button class="copy-btn" onclick="copyCommand('git branch', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git branch &lt;name&gt;</code>
+            <span class="command-desc">Create new branch</span>
+            <button class="copy-btn" onclick="copyCommand('git branch <name>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git checkout &lt;branch&gt;</code>
+            <span class="command-desc">Switch to another branch</span>
+            <button class="copy-btn" onclick="copyCommand('git checkout <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git merge &lt;branch&gt;</code>
+            <span class="command-desc">Combine another branch into current one</span>
+            <button class="copy-btn" onclick="copyCommand('git merge <branch>', this)">Copy</button>
+        </div>
+    </div>
+
+    <div class="section difficulty-medium">
+        <h2>🟡 Medium Commands (Getting Comfortable)</h2>
+        
+        <h3>Branch Management</h3>
+        <div class="command-item">
+            <code class="command-code">git checkout -b &lt;branch&gt;</code>
+            <span class="command-desc">Create and switch to new branch in one command</span>
+            <button class="copy-btn" onclick="copyCommand('git checkout -b <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git branch -d &lt;branch&gt;</code>
+            <span class="command-desc">Delete a branch (safe deletion)</span>
+            <button class="copy-btn" onclick="copyCommand('git branch -d <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git branch -D &lt;branch&gt;</code>
+            <span class="command-desc">Force delete a branch</span>
+            <button class="copy-btn" onclick="copyCommand('git branch -D <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git push -u origin &lt;branch&gt;</code>
+            <span class="command-desc">Push new branch to GitHub and track it</span>
+            <button class="copy-btn" onclick="copyCommand('git push -u origin <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git push origin --delete &lt;branch&gt;</code>
+            <span class="command-desc">Delete branch from GitHub</span>
+            <button class="copy-btn" onclick="copyCommand('git push origin --delete <branch>', this)">Copy</button>
+        </div>
+
+        <h3>Undoing Changes</h3>
+        <div class="command-item">
+            <code class="command-code">git checkout -- &lt;file&gt;</code>
+            <span class="command-desc">Discard changes in a file (back to last commit)</span>
+            <button class="copy-btn" onclick="copyCommand('git checkout -- <file>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git reset HEAD &lt;file&gt;</code>
+            <span class="command-desc">Unstage a file (opposite of git add)</span>
+            <button class="copy-btn" onclick="copyCommand('git reset HEAD <file>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git commit --amend</code>
+            <span class="command-desc">Change the last commit message or add more files</span>
+            <button class="copy-btn" onclick="copyCommand('git commit --amend', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git revert &lt;commit-id&gt;</code>
+            <span class="command-desc">Create new commit that undoes another commit</span>
+            <button class="copy-btn" onclick="copyCommand('git revert <commit-id>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git clean -f</code>
+            <span class="command-desc">Delete untracked files permanently</span>
+            <button class="copy-btn" onclick="copyCommand('git clean -f', this)">Copy</button>
+        </div>
+
+        <h3>Cherry Picking & Stashing</h3>
+        <div class="command-item">
+            <code class="command-code">git cherry-pick &lt;commit-id&gt;</code>
+            <span class="command-desc">Copy a specific commit to current branch</span>
+            <button class="copy-btn" onclick="copyCommand('git cherry-pick <commit-id>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git stash</code>
+            <span class="command-desc">Temporarily save changes without committing</span>
+            <button class="copy-btn" onclick="copyCommand('git stash', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git stash -u</code>
+            <span class="command-desc">Stash changes including untracked files</span>
+            <button class="copy-btn" onclick="copyCommand('git stash -u', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git stash pop</code>
+            <span class="command-desc">Bring back stashed changes</span>
+            <button class="copy-btn" onclick="copyCommand('git stash pop', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git stash list</code>
+            <span class="command-desc">See all your stashes</span>
+            <button class="copy-btn" onclick="copyCommand('git stash list', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git stash drop</code>
+            <span class="command-desc">Delete a stash</span>
+            <button class="copy-btn" onclick="copyCommand('git stash drop', this)">Copy</button>
+        </div>
+
+        <h3>Remote Management</h3>
+        <div class="command-item">
+            <code class="command-code">git remote -v</code>
+            <span class="command-desc">See which GitHub repository you're connected to</span>
+            <button class="copy-btn" onclick="copyCommand('git remote -v', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git remote add origin &lt;url&gt;</code>
+            <span class="command-desc">Connect your folder to a GitHub repository</span>
+            <button class="copy-btn" onclick="copyCommand('git remote add origin <url>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git fetch</code>
+            <span class="command-desc">Download changes but don't merge them yet</span>
+            <button class="copy-btn" onclick="copyCommand('git fetch', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git push --set-upstream origin &lt;branch&gt;</code>
+            <span class="command-desc">Push and track new branch</span>
+            <button class="copy-btn" onclick="copyCommand('git push --set-upstream origin <branch>', this)">Copy</button>
+        </div>
+    </div>
+
+    <div class="section difficulty-hard">
+        <h2>🔴 Hard Commands (Advanced Wizardry)</h2>
+        
+        <h3>History Rewriting (Dangerous!)</h3>
+        <div class="command-item">
+            <code class="command-code">git reset --soft HEAD~1</code>
+            <span class="command-desc">Undo last commit, keep changes staged</span>
+            <button class="copy-btn" onclick="copyCommand('git reset --soft HEAD~1', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git reset --mixed HEAD~1</code>
+            <span class="command-desc">Undo last commit, unstage changes</span>
+            <button class="copy-btn" onclick="copyCommand('git reset --mixed HEAD~1', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git reset --hard HEAD~1</code>
+            <span class="command-desc">Undo last commit, delete all changes</span>
+            <button class="copy-btn" onclick="copyCommand('git reset --hard HEAD~1', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git reset --hard &lt;commit-id&gt;</code>
+            <span class="command-desc">Jump back to specific commit, lose everything after</span>
+            <button class="copy-btn" onclick="copyCommand('git reset --hard <commit-id>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git rebase -i HEAD~3</code>
+            <span class="command-desc">Interactively edit last 3 commits (squash, reorder, etc.)</span>
+            <button class="copy-btn" onclick="copyCommand('git rebase -i HEAD~3', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git rebase &lt;branch&gt;</code>
+            <span class="command-desc">Move your commits to tip of another branch</span>
+            <button class="copy-btn" onclick="copyCommand('git rebase <branch>', this)">Copy</button>
+        </div>
+
+        <h3>Advanced History & Recovery</h3>
+        <div class="command-item">
+            <code class="command-code">git reflog</code>
+            <span class="command-desc">See everything you've done (even deleted commits!)</span>
+            <button class="copy-btn" onclick="copyCommand('git reflog', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git fsck --lost-found</code>
+            <span class="command-desc">Find orphaned commits</span>
+            <button class="copy-btn" onclick="copyCommand('git fsck --lost-found', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git log --graph --oneline --all</code>
+            <span class="command-desc">Visual tree of all branches</span>
+            <button class="copy-btn" onclick="copyCommand('git log --graph --oneline --all', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git blame &lt;file&gt;</code>
+            <span class="command-desc">See who wrote each line of code</span>
+            <button class="copy-btn" onclick="copyCommand('git blame <file>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git bisect start</code>
+            <span class="command-desc">Binary search to find which commit broke something</span>
+            <button class="copy-btn" onclick="copyCommand('git bisect start', this)">Copy</button>
+        </div>
+
+        <h3>Advanced Merging</h3>
+        <div class="command-item">
+            <code class="command-code">git merge --no-ff &lt;branch&gt;</code>
+            <span class="command-desc">Force create merge commit (even if fast-forward possible)</span>
+            <button class="copy-btn" onclick="copyCommand('git merge --no-ff <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git merge --squash &lt;branch&gt;</code>
+            <span class="command-desc">Combine all commits from branch into one</span>
+            <button class="copy-btn" onclick="copyCommand('git merge --squash <branch>', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git merge -X ours &lt;branch&gt;</code>
+            <span class="command-desc">Merge but prefer our version in conflicts</span>
+            <button class="copy-btn" onclick="copyCommand('git merge -X ours <branch>', this)">Copy</button>
+        </div>
+    </div>
+
+    <div class="section difficulty-github">
+        <h2>🐙 GitHub Concepts</h2>
+        
+        <h3>Repository Management</h3>
+        <div class="tip">
+            <strong>Fork</strong> - Make your own copy of someone else's repository<br>
+            <strong>Clone</strong> - Download a repository to your computer<br>
+            <strong>Star</strong> - Bookmark a repository (like a "like" button)<br>
+            <strong>Watch</strong> - Get notifications when repository changes<br>
+            <strong>Issues</strong> - Bug reports or feature requests<br>
+            <strong>Pull Request (PR)</strong> - Ask to merge your changes into main repository
+        </div>
+
+        <h3>Collaboration Workflow</h3>
+        <div class="workflow">
+            <h4>Contributing to Open Source</h4>
+            <pre><button class="copy-workflow-btn" onclick="copyWorkflow(this)">Copy</button># On GitHub: Fork the repository
+git clone &lt;your-fork-url&gt;
+git checkout -b feature-branch
+# Make changes
+git add .
+git commit -m "Add amazing feature"
+git push origin feature-branch
+# On GitHub: Create Pull Request</pre>
+        </div>
+    </div>
+
+    <div class="section difficulty-emergency">
+        <h2>🚨 Emergency Commands (When Things Go Wrong)</h2>
+        
+        <h3>"I Messed Up!"</h3>
+        <div class="command-item">
+            <code class="command-code">git reflog</code>
+            <span class="command-desc">Find lost commits</span>
+            <button class="copy-btn" onclick="copyCommand('git reflog', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git reset --hard HEAD@{1}</code>
+            <span class="command-desc">Go back to where you were before</span>
+            <button class="copy-btn" onclick="copyCommand('git reset --hard HEAD@{1}', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git checkout &lt;commit-id&gt; -- &lt;file&gt;</code>
+            <span class="command-desc">Restore specific file from specific commit</span>
+            <button class="copy-btn" onclick="copyCommand('git checkout <commit-id> -- <file>', this)">Copy</button>
+        </div>
+
+        <h3>"I Can't Push!"</h3>
+        <div class="command-item">
+            <code class="command-code">git pull --rebase</code>
+            <span class="command-desc">Download changes and replay your commits on top</span>
+            <button class="copy-btn" onclick="copyCommand('git pull --rebase', this)">Copy</button>
+        </div>
+        <div class="command-item">
+            <code class="command-code">git push --force-with-lease</code>
+            <span class="command-desc">Force push but safely</span>
+            <button class="copy-btn" onclick="copyCommand('git push --force-with-lease', this)">Copy</button>
+        </div>
+
+        <div class="workflow">
+            <h4>Fixing Merge Conflicts</h4>
+            <pre><button class="copy-workflow-btn" onclick="copyWorkflow(this)">Copy</button>git status  # See which files have conflicts
+# Edit files to resolve &lt;&lt;&lt;&lt;&lt;&lt;&lt; ======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; markers
+git add &lt;resolved-files&gt;  # Mark conflicts as resolved
+git commit  # Complete the merge</pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💡 Pro Tips</h2>
+        <div class="tip">
+            • <strong>Always use <code>git status</code></strong> - It tells you exactly what to do next<br>
+            • <strong>Commit early, commit often</strong> - Small commits are easier to understand<br>
+            • <strong>Write good commit messages</strong> - Future you will thank present you<br>
+            • <strong>Use branches</strong> - Keep main branch clean<br>
+            • <strong><code>git log --oneline</code></strong> - Quick way to see recent commits<br>
+            • <strong>Never <code>git push --force</code></strong> to shared branches<br>
+            • <strong><code>git stash</code> is your friend</strong> - When you need to quickly switch context
+        </div>
+    </div>
+
+    <script>
+        function copyCommand(command, button) {
+            navigator.clipboard.writeText(command).then(() => {
+                button.textContent = '✓ Copied!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyWorkflow(button) {
+            const pre = button.parentElement;
+            const text = pre.textContent.replace('Copy', '').trim();
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = '✓ Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        function downloadMarkdown() {
+            const markdownContent = `# Complete Git & GitHub Cheat Sheet
+
+## 🟢 Easy Commands (Everyday Basics)
+
+### Repository Setup
+- \`git init\` - Create a new Git repository in current folder
+- \`git clone <url>\` - Download a repository from GitHub to your computer
+- \`git status\` - Show what files have changed (your best friend!)
+- \`git add <file>\` - Stage a file for commit (prepare it)
+- \`git add .\` - Stage all changed files
+- \`git commit -m "message"\` - Save changes with a description
+- \`git push\` - Upload your commits to GitHub
+- \`git pull\` - Download latest changes from GitHub
+
+### Basic Information
+- \`git log\` - See history of commits
+- \`git log --oneline\` - See commit history in compact format
+- \`git diff\` - Show what changes you made
+- \`git branch\` - List all branches
+- \`git branch <name>\` - Create new branch
+- \`git checkout <branch>\` - Switch to another branch
+- \`git merge <branch>\` - Combine another branch into current one
+
+---
+
+## 🟡 Medium Commands (Getting Comfortable)
+
+### Branch Management
+- \`git checkout -b <branch>\` - Create and switch to new branch in one command
+- \`git branch -d <branch>\` - Delete a branch (safe deletion)
+- \`git branch -D <branch>\` - Force delete a branch
+- \`git push -u origin <branch>\` - Push new branch to GitHub and track it
+- \`git push origin --delete <branch>\` - Delete branch from GitHub
+
+### Undoing Changes
+- \`git checkout -- <file>\` - Discard changes in a file (back to last commit)
+- \`git reset HEAD <file>\` - Unstage a file (opposite of git add)
+- \`git commit --amend\` - Change the last commit message or add more files
+- \`git revert <commit-id>\` - Create new commit that undoes another commit
+- \`git clean -f\` - Delete untracked files permanently
+
+### Cherry Picking & Stashing
+- \`git cherry-pick <commit-id>\` - Copy a specific commit to current branch
+- \`git stash\` - Temporarily save changes without committing
+- \`git stash -u\` - Stash changes including untracked files
+- \`git stash pop\` - Bring back stashed changes
+- \`git stash list\` - See all your stashes
+- \`git stash drop\` - Delete a stash
+
+### Remote Management
+- \`git remote -v\` - See which GitHub repository you're connected to
+- \`git remote add origin <url>\` - Connect your folder to a GitHub repository
+- \`git fetch\` - Download changes but don't merge them yet
+- \`git push --set-upstream origin <branch>\` - Push and track new branch
+
+---
+
+## 🔴 Hard Commands (Advanced Wizardry)
+
+### History Rewriting (Dangerous!)
+- \`git reset --soft HEAD~1\` - Undo last commit, keep changes staged
+- \`git reset --mixed HEAD~1\` - Undo last commit, unstage changes
+- \`git reset --hard HEAD~1\` - Undo last commit, delete all changes
+- \`git reset --hard <commit-id>\` - Jump back to specific commit, lose everything after
+- \`git rebase -i HEAD~3\` - Interactively edit last 3 commits (squash, reorder, etc.)
+- \`git rebase <branch>\` - Move your commits to tip of another branch
+
+### Advanced History & Recovery
+- \`git reflog\` - See everything you've done (even deleted commits!)
+- \`git fsck --lost-found\` - Find orphaned commits
+- \`git log --graph --oneline --all\` - Visual tree of all branches
+- \`git blame <file>\` - See who wrote each line of code
+- \`git bisect start\` - Binary search to find which commit broke something
+
+### Advanced Merging
+- \`git merge --no-ff <branch>\` - Force create merge commit (even if fast
