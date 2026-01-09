@@ -33,12 +33,14 @@ export default function GitCheatSheet() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <Header />
+      <div className="max-w-6xl mx-auto px-4 pt-6 ">
+        <Header />
+      </div>
 
       {/* Search and Filters */}
-      {/* <div className="max-w-6xl mx-auto px-4 py-6 sticky top-32 sm:top-36 bg-gradient-to-br from-gray-50 to-gray-100 z-10">
-        <div className="bg-white rounded-xl shadow-md p-4 space-y-4">
-          <div className="relative">
+      <div className="max-w-6xl mx-auto px-4 py-6 top-32 sm:top-36 bg-gradient-to-br from-gray-50 to-gray-100 z-10">
+        <div className="bg-white rounded-xl shadow-md p-4">
+          {/* <div className="relative">
             <Search
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
               size={20}
@@ -50,14 +52,14 @@ export default function GitCheatSheet() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none"
             />
-          </div>
+          </div> */}
 
           <FilterBar
             activeFilter={activeFilter}
             onFilterChange={setActiveFilter}
           />
         </div>
-      </div> */}
+      </div>
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 pb-12">
