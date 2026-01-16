@@ -14,15 +14,8 @@ export default function SectionCard({ section }: SectionCardProps) {
     medium: "border-l-yellow-500",
     hard: "border-l-red-500",
     github: "border-l-purple-500",
+    concepts: "border-l-blue-500",
     emergency: "border-l-orange-500",
-  };
-
-  const difficultyIcons = {
-    easy: <Book className="text-green-500" />,
-    medium: <GitBranch className="text-yellow-500" />,
-    hard: <AlertTriangle className="text-red-500" />,
-    github: <Github className="text-purple-500" />,
-    emergency: <AlertTriangle className="text-orange-500" />,
   };
 
   return (
@@ -32,7 +25,6 @@ export default function SectionCard({ section }: SectionCardProps) {
       } p-4 sm:p-6 mb-6`}
     >
       <div className="flex items-center gap-3 mb-6">
-        {difficultyIcons[section.difficulty]}
         <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
           {section.title}
         </h2>

@@ -12,6 +12,7 @@ export default function FilterBar({
   const filters = [
     { id: "all" as const, label: "All", color: "bg-gray-500" },
     { id: "easy" as const, label: "Easy", color: "bg-green-500" },
+    { id: "concepts" as const, label: "Concepts", color: "bg-blue-500" },
     { id: "medium" as const, label: "Medium", color: "bg-yellow-500" },
     { id: "hard" as const, label: "Hard", color: "bg-red-500" },
     { id: "github" as const, label: "GitHub", color: "bg-purple-500" },

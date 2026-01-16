@@ -20,7 +20,9 @@ export type DifficultyType =
   | "medium"
   | "hard"
   | "github"
-  | "emergency";
+  | "emergency"
+  | "concepts";
+
 export type FilterType = DifficultyType | "all";
 
 export interface Section {
