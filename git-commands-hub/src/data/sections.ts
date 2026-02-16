@@ -579,6 +579,15 @@ docker push ghcr.io/username/myapp:v1.0.0
             description: "Stash changes including untracked files",
           },
           {
+            code: "git stash push --keep-index",
+            description:
+              "Stashes unstaged changes, Keeps staged changes in your index",
+          },
+          {
+            code: "git stash push -u --keep-index",
+            description: "Include untracked files with keep-index",
+          },
+          {
             code: "git stash --staged",
             description: "Stash changes that are staged for commit",
           },
